@@ -41,7 +41,8 @@
     align-items: center;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 19px;
+    border-radius: 10px;
+
     }
     .w{
         background-color: #bd82e1;
@@ -87,7 +88,8 @@ width: 50%;
    position: relative;
     top: -7%;
     color: #9122ff;
-    font-size: 166px;
+    font-size: clamp(1.5rem, 4vw, 8.5rem);
+    /* font-size: 166px; */
     font-weight: 800;
     transform: rotate(180deg);
     }
@@ -95,7 +97,8 @@ width: 50%;
     position: relative;
     bottom: -7%;
     color: white;
-    font-size: 166px;
+    font-size: clamp(1.5rem, 4vw, 8.5rem);
+    /* font-size: 166px; */
     font-weight: 800;
     text-shadow: -1px -1px 0 black,
     1px -1px 0 black , 
