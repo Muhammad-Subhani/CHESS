@@ -27,4 +27,4 @@ Since this is built with standard web technologies, you don't need to install an
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/Muhammad-Subhani/CHESS.git](https://github.com/Muhammad-Subhani/CHESS.git)
+   git clone https://github.com/Muhammad-Subhani/CHESS
