@@ -25,9 +25,12 @@ let Black_rook_position = [0, 0];
 let black_pawn = [0, 1, 0, 0, 0, 0, 0, 0];
 let white_pawn = [0, 0, 0, 0, 0, 0, 0, 0];
 let white_turn = [0];
-let W_msg = document.getElementById("white")
-let B_msg = document.getElementById("black")
+let msgbox = document.getElementById("Which_turn");
 const boxes = document.querySelectorAll(".box");
+let player_1 = document.getElementById("P1");
+player_1.innerText = prompt("Enter the First Player Name !");
+let player_2 = document.getElementById("P2");
+player_2.innerText = prompt("Enter the Second Player Name !");
 // funtion that diaplays the chess
 function display() {
   for (let i = 0; i < 8; i++) {
@@ -59,6 +62,18 @@ let firstpassed = false;
 let negative_x = 0;
 let negative_y = 0;
 let EnPassant = "";
+// display which one you selected 
+function Display_selected(i , j ) {
+  let image = grid[i][j].split("-")[0];
+  if (white_turn[0] == 0) {
+    let box = document.getElementById("small_imgW");
+    box.innerHTML = `<img src="./asset2/${image}.png">`;
+  }
+  if (white_turn[0] == 1) {
+    let box = document.getElementById("small_imgB");
+    box.innerHTML = `<img src="./asset2/${image}.png">`;
+  }
+}
 // checking if the castling saves the king from being in check 
 function Castle_save (your_key , cast_type){
   let yr_king = (your_key == "W")? W_king_position[1] : B_king_position[0];
@@ -1347,10 +1362,9 @@ function turn() {
   let your_team;
     avail_moves_chk[0] = 0;
   if (white_turn[0] == 0) {
-    B_msg.classList.add("hide")
-    W_msg.classList.remove("hide")
     opposing_team = "B";
     your_team = "W";
+    msgbox.innerText = "White's Turn ";
     // king check
     let K_cords = W_king_position[1].split("-");
     let i = Number(K_cords[0]);
@@ -1370,10 +1384,9 @@ function turn() {
       });
     }
   } else {
-    B_msg.classList.remove("hide");
-    W_msg.classList.add("hide")
     opposing_team = "W";
     your_team = "B";
+    msgbox.innerText = "Black's Turn ";
     // king check
     let K_cords = B_king_position[1].split("-");
     let i = Number(K_cords[0]);
@@ -1422,6 +1435,7 @@ boxes.forEach((box) => {
       let id = box.getAttribute("id").split("-");
       row = id[1];
       column = id[2];
+      Display_selected(row , column);
       // to check which one was clicked black or white one
       let black_white = grid[row][column].split("-")[0][0];
       let right_mostinfo = grid[row][column].split("-")[1];
